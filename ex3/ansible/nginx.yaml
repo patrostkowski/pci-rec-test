@@ -1,0 +1,14 @@
+---
+- name: setup webserver
+  hosts: all
+  become: true
+  tasks:
+    - name: ensure nginx is installed
+      apt:
+        name: nginx
+        state: latest
+    - name: ensure nginx is started and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: yes
